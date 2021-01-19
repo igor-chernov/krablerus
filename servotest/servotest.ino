@@ -10,8 +10,8 @@ volatile byte estate=0; // first two bits store previous encoder state, third an
 volatile long int odo;
 ISR(TIMER2_COMPA_vect){  //here we read encoder values and update global variable odo
 estate=(estate & B11000000) | (B00110000 & (PIND << 2));
-if ((estate==B00010000)|(estate==B01110000)|(estate==B11100000)|(estate==B10000000)) odo--;
-if ((estate==B10110000)|(estate==B11010000)|(estate==B01000000)|(estate==B00010000)) odo++;
+if ((estate==B00010000)|(estate==B01110000)|(estate==B11100000)|(estate==B10000000)) odo++;
+if ((estate==B01000000)|(estate==B11010000)|(estate==B10110000)|(estate==B00100000)) odo--;
 estate=estate<<2;
 }
 
